@@ -1,57 +1,182 @@
-/* Seletor CSS: definindo o estilo geral da página */
+/* ============================================= */
+/* ESTILOS GERAIS                                */
+/* ============================================= */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8f0; /* Fundo verde claro */
-    margin: 0; /* Remove a margem padrão do navegador */
-    padding: 20px; /* Dá um respiro interno na página */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f0f8f0;
+    margin: 0;
+    padding: 20px;
 }
 
-/* Seletor por elemento: estilizando o cabeçalho */
+/* ============================================= */
+/* CABEÇALHO                                     */
+/* ============================================= */
+
 header {
     background-color: #2d5e2d;
     color: white;
-    padding: 20px; /* Espaçamento interno */
+    padding: 20px;
     text-align: center;
-    border-radius: 10px; /* Borda arredondada (bonus) */
-    margin-bottom: 30px; /* Margem externa inferior */
-    border: 3px solid #1a3b1a; /* Aplicando a propriedade border */
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 3px solid #1a3b1a;
 }
 
-/* Seletor por classe: cada "card" do bioma */
-.card-bioma {
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* ============================================= */
+/* MAIN (sem flex)                               */
+/* ============================================= */
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================= */
+/* CADA ARTIGO (POST)                            */
+/* ============================================= */
+
+article {
+    display: flex;          /* Imagem e texto lado a lado */
+    gap: 25px;              /* Espaço entre imagem e texto */
+    align-items: center;    /* Centraliza verticalmente */
     background-color: white;
-    border: 2px solid #4caf50; /* Borda verde */
-    border-radius: 15px; /* Deixa as bordas redondinhas */
-    padding: 20px; /* Espaço interno entre a borda e o texto */
-    margin-bottom: 30px; /* Distância entre um card e outro */
-    max-width: 650px; /* O card não fica gigante em telas grandes */
-    margin-left: auto;  /* Centraliza o card */
-    margin-right: auto; /* Centraliza o card */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave (bonus) */
+    border: 2px solid #4caf50;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-/* Estilizando as imagens dentro dos cards */
-.card-bioma img {
-    width: 100%; /* A imagem ocupa 100% da largura do card */
-    height: auto; /* Mantém a proporção original */
-    border: 1px solid #ccc; /* Borda fina cinza ao redor da imagem */
-    border-radius: 8px; /* Borda arredondada na imagem */
-    display: block; /* Remove espacinhos indesejados abaixo da imagem */
+article:hover {
+    transform: scale(1.01);
 }
 
-/* Estilizando os títulos dentro do card */
-.card-bioma h2 {
+/* ============================================= */
+/* IMAGEM DENTRO DO ARTIGO                       */
+/* ============================================= */
+
+article img {
+    width: 35%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+/* ============================================= */
+/* DIV DO TEXTO                                  */
+/* ============================================= */
+
+article div {
+    width: 65%;
+}
+
+article h2 {
     color: #1e4a1e;
-    margin-top: 0; /* Remove margem superior do título */
+    margin-top: 0;
+    font-size: 1.8em;
 }
 
-/* Rodapé */
+article p {
+    color: #333;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+article p strong {
+    color: #2d5e2d;
+}
+
+/* ============================================= */
+/* BOTÕES DE REAÇÃO                              */
+/* ============================================= */
+
+.botoes-reacao {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: #e8f5e9;
+    color: #1e4a1e;
+    border: 2px solid #4caf50;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #4caf50;
+    color: white;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button span {
+    background-color: rgba(0,0,0,0.1);
+    padding: 0 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ============================================= */
+/* RODAPÉ                                        */
+/* ============================================= */
+
 footer {
     text-align: center;
     padding: 15px;
     background-color: #2d5e2d;
     color: white;
     border-radius: 10px;
-    max-width: 650px;
-    margin: 20px auto; /* Centraliza o rodapé */
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* ============================================= */
+/* RESPONSIVIDADE (para celulares)               */
+/* ============================================= */
+
+@media (max-width: 700px) {
+    article {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    article img {
+        width: 90%;
+    }
+
+    article div {
+        width: 100%;
+    }
+
+    .botoes-reacao {
+        justify-content: center;
+    }
 }
