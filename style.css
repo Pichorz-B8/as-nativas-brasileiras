@@ -35,64 +35,79 @@ header p {
 }
 
 /* ============================================= */
-/* MAIN (sem flex)                               */
+/* MAIN = CONTAINER FLEXBOX (PAI DOS CARDS)      */
 /* ============================================= */
 
 main {
-    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 /* ============================================= */
-/* CADA ARTIGO (POST)                            */
+/* ARTICLE = CADA CARD (FILHO DO MAIN)           */
 /* ============================================= */
 
 article {
-    display: flex;          /* Imagem e texto lado a lado */
-    gap: 25px;              /* Espaço entre imagem e texto */
-    align-items: center;    /* Centraliza verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;        /* Texto justificado para facilitar a leitura */
+    
+    flex: 1 1 30%;              /* 3 cards por linha */
+    max-width: 400px;
+    min-width: 280px;
+    
     background-color: white;
     border: 2px solid #4caf50;
     border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 30px;
+    padding: 20px;
+    margin: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 article:hover {
-    transform: scale(1.01);
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 /* ============================================= */
-/* IMAGEM DENTRO DO ARTIGO                       */
+/* IMAGEM DENTRO DO CARD                         */
 /* ============================================= */
 
 article img {
-    width: 35%;
-    height: auto;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 10px;
     border: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
 /* ============================================= */
-/* DIV DO TEXTO                                  */
+/* TEXTO DENTRO DO CARD                          */
 /* ============================================= */
 
 article div {
-    width: 65%;
+    width: 100%;
 }
 
 article h2 {
     color: #1e4a1e;
-    margin-top: 0;
-    font-size: 1.8em;
+    margin: 5px 0 10px;
+    font-size: 1.6em;
+    text-align: center;
 }
 
 article p {
     color: #333;
     line-height: 1.6;
-    margin: 8px 0;
+    margin: 6px 0;
+    font-size: 0.92em;
 }
 
 article p strong {
@@ -106,22 +121,23 @@ article p strong {
 .botoes-reacao {
     margin-top: 15px;
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
     background-color: #e8f5e9;
     color: #1e4a1e;
     border: 2px solid #4caf50;
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-weight: bold;
 }
 
@@ -137,10 +153,10 @@ button:active {
 
 button span {
     background-color: rgba(0,0,0,0.1);
-    padding: 0 10px;
+    padding: 0 8px;
     border-radius: 20px;
-    font-size: 16px;
-    min-width: 20px;
+    font-size: 14px;
+    min-width: 18px;
     text-align: center;
 }
 
@@ -154,29 +170,29 @@ footer {
     background-color: #2d5e2d;
     color: white;
     border-radius: 10px;
-    max-width: 900px;
-    margin: 20px auto;
+    max-width: 1400px;
+    margin: 30px auto 0;
+    clear: both;
 }
 
 /* ============================================= */
-/* RESPONSIVIDADE (para celulares)               */
+/* RESPONSIVIDADE                                */
 /* ============================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     article {
-        flex-direction: column;
-        text-align: center;
+        flex: 1 1 45%;          /* 2 cards por linha */
+        max-width: 45%;
     }
+}
 
-    article img {
-        width: 90%;
+@media (max-width: 600px) {
+    article {
+        flex: 1 1 100%;         /* 1 card por linha */
+        max-width: 100%;
     }
-
-    article div {
-        width: 100%;
-    }
-
-    .botoes-reacao {
-        justify-content: center;
+    
+    header h1 {
+        font-size: 1.8em;
     }
 }
