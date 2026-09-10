@@ -1,12 +1,44 @@
 /* ============================================= */
+/* VARIÁVEIS GLOBAIS (TEMA CLARO)                */
+/* ============================================= */
+
+:root {
+    /* Cores principais */
+    --cor-primaria: #2d5e2d;
+    --cor-secundaria: #4caf50;
+    --cor-fundo: #f0f8f0;
+    --cor-texto: #1a1a1a;
+    --cor-contraste: #ffffff;
+    --cor-botao: #e8f5e9;
+    --cor-destaque: #369a00;
+    
+    /* Fontes */
+    --fonte-texto: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Sombras */
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --sombra-hover: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================= */
+/* TRANSIÇÃO UNIVERSAL (para troca suave de tema)*/
+/* ============================================= */
+
+* {
+    transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ============================================= */
 /* ESTILOS GERAIS                                */
 /* ============================================= */
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f0f8f0;
+    font-family: var(--fonte-texto);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     margin: 0;
     padding: 20px;
+    min-height: 100vh;
 }
 
 /* ============================================= */
@@ -14,13 +46,14 @@ body {
 /* ============================================= */
 
 header {
-    background-color: #2d5e2d;
-    color: white;
-    padding: 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-contraste);
+    padding: 25px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 30px;
     border: 3px solid #1a3b1a;
+    box-shadow: var(--sombra-padrao);
 }
 
 header h1 {
@@ -29,9 +62,18 @@ header h1 {
 }
 
 header p {
-    margin: 5px 0 0;
+    margin: 8px 0 0;
     font-size: 1.2em;
     opacity: 0.9;
+}
+
+header a {
+    color: #a8d5a8;
+    text-decoration: underline;
+}
+
+header a:hover {
+    color: #ffffff;
 }
 
 /* ============================================= */
@@ -41,10 +83,11 @@ header p {
 main {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     max-width: 1400px;
     margin: 0 auto;
+    padding-bottom: 80px; /* Espaço para os botões fixos */
 }
 
 /* ============================================= */
@@ -55,24 +98,24 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: justify;        /* Texto justificado para facilitar a leitura */
+    text-align: justify;
     
-    flex: 1 1 30%;              /* 3 cards por linha */
+    flex: 1 1 30%;
     max-width: 400px;
     min-width: 280px;
     
-    background-color: white;
-    border: 2px solid #4caf50;
+    background-color: var(--cor-contraste);
     border-radius: 15px;
     padding: 20px;
-    margin: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: var(--sombra-padrao);
+    border: 2px solid var(--cor-secundaria);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* EFEITO HOVER NOS CARDS */
 article:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: var(--sombra-hover);
 }
 
 /* ============================================= */
@@ -81,11 +124,16 @@ article:hover {
 
 article img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid var(--cor-secundaria);
     margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+article:hover img {
+    border-color: var(--cor-destaque);
 }
 
 /* ============================================= */
@@ -97,21 +145,49 @@ article div {
 }
 
 article h2 {
-    color: #1e4a1e;
+    color: var(--cor-primaria);
     margin: 5px 0 10px;
     font-size: 1.6em;
     text-align: center;
 }
 
 article p {
-    color: #333;
+    color: var(--cor-texto);
     line-height: 1.6;
     margin: 6px 0;
     font-size: 0.92em;
 }
 
 article p strong {
-    color: #2d5e2d;
+    color: var(--cor-primaria);
+}
+
+/* ============================================= */
+/* LINKS DENTRO DOS ARTIGOS                      */
+/* ============================================= */
+
+article a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+article a:hover {
+    color: var(--cor-destaque);
+    text-decoration: underline;
+}
+
+/* ============================================= */
+/* FONTE DO ARTIGO                              */
+/* ============================================= */
+
+.artigo-fonte {
+    font-size: 0.85em;
+    opacity: 0.8;
+    margin-top: 10px;
+    font-style: ;
+    text-align: right;
 }
 
 /* ============================================= */
@@ -121,29 +197,29 @@ article p strong {
 .botoes-reacao {
     margin-top: 15px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 button {
-    background-color: #e8f5e9;
-    color: #1e4a1e;
-    border: 2px solid #4caf50;
-    padding: 8px 14px;
+    background-color: var(--cor-botao);
+    color: var(--cor-texto);
+    border: 2px solid var(--cor-secundaria);
+    padding: 10px 18px;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-weight: bold;
 }
 
 button:hover {
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-contraste);
     transform: scale(1.05);
 }
 
@@ -152,12 +228,68 @@ button:active {
 }
 
 button span {
-    background-color: rgba(0,0,0,0.1);
-    padding: 0 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
     border-radius: 20px;
-    font-size: 14px;
-    min-width: 18px;
+    font-size: 16px;
+    min-width: 20px;
     text-align: center;
+}
+
+/* ============================================= */
+/* BOTÕES FLUTUANTES (FIXOS)                     */
+/* ============================================= */
+
+.btn-tema-escuro {
+    position: fixed;
+    bottom: 80px;      /* Fica acima do botão de voltar ao topo */
+    right: 20px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-contraste);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--sombra-padrao);
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-tema-escuro:hover {
+    transform: scale(1.1);
+    box-shadow: var(--sombra-hover);
+}
+
+.btn-voltar-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 28px;
+    padding: 12px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-contraste);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--sombra-padrao);
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar-topo:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: var(--sombra-hover);
 }
 
 /* ============================================= */
@@ -166,13 +298,128 @@ button span {
 
 footer {
     text-align: center;
-    padding: 15px;
-    background-color: #2d5e2d;
-    color: white;
-    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-contraste);
+    border-radius: 15px;
     max-width: 1400px;
     margin: 30px auto 0;
     clear: both;
+    box-shadow: var(--sombra-padrao);
+}
+
+footer a {
+    color: #e7e5ef;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--cor-destaque);
+    text-decoration: underline;
+}
+
+/* ============================================= */
+/* ========== TEMA ESCURO ==========             */
+/* ============================================= */
+
+.tema-escuro {
+    --cor-primaria: #215121;
+    --cor-secundaria: #66bb6a;
+    --cor-fundo: #141414;
+    --cor-texto: #e8e8e8;
+    --cor-contraste: #0c3016;
+    --cor-botao: #0d1e13;
+    --cor-destaque: #369a00;
+    --cor-topicos: #4f9429;
+    
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --sombra-hover: 0 8px 24px rgba(100, 200, 255, 0.2);
+}
+
+.tema-escuro a:hover {
+    color: #000c00;
+}
+
+/* Parágrafos no tema escuro */
+.tema-escuro p {
+    color: var(--cor-texto);
+}
+
+/* Cabeçalho no tema escuro */
+.tema-escuro header p {
+    color: #d6dbd6;
+}
+
+.tema-escuro header a {
+    color: #00ff00;
+}
+
+.tema-escuro header a:hover {
+    color: #ffffff;
+}
+
+/* Artigos no tema escuro */
+.tema-escuro article {
+    background-color: var(--cor-contraste);
+    border-color: var(--cor-secundaria);
+    box-shadow: var(--sombra-padrao);
+}
+
+.tema-escuro article:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+.tema-escuro article h2 {
+    color: var(--cor-topicos);
+}
+
+.tema-escuro article:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+.tema-escuro article p strong {
+    color: var(--cor-topicos);
+}
+
+.tema-escuro article:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+.tema-escuro article img {
+    border-color: var(--cor-destaque);
+}
+
+/* Botão de tema escuro no modo escuro */
+.tema-escuro .btn-tema-escuro {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+}
+
+.tema-escuro .btn-tema-escuro:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Botão voltar ao topo no modo escuro */
+.tema-escuro .btn-voltar-topo {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+}
+
+.tema-escuro .btn-voltar-topo:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Rodapé no tema escuro */
+.tema-escuro footer {
+    background-color: #122c13;
+}
+
+.tema-escuro footer a {
+    color: var(--cor-secundaria);
+}
+
+.tema-escuro footer a:hover {
+    color: var(--cor-topicos);
 }
 
 /* ============================================= */
@@ -181,18 +428,34 @@ footer {
 
 @media (max-width: 900px) {
     article {
-        flex: 1 1 45%;          /* 2 cards por linha */
+        flex: 1 1 45%;
         max-width: 45%;
     }
 }
 
 @media (max-width: 600px) {
     article {
-        flex: 1 1 100%;         /* 1 card por linha */
+        flex: 1 1 100%;
         max-width: 100%;
     }
     
     header h1 {
         font-size: 1.8em;
+    }
+    
+    .btn-tema-escuro,
+    .btn-voltar-topo {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        right: 10px;
+    }
+    
+    .btn-tema-escuro {
+        bottom: 70px;
+    }
+    
+    .btn-voltar-topo {
+        bottom: 10px;
     }
 }

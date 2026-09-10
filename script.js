@@ -1,28 +1,54 @@
 // =============================================
-// SELECIONA TODOS OS BOTÕES DA PÁGINA
+// 1. BOTÕES DE REAÇÃO (CURTIR/DESCURTIR)
 // =============================================
-const botoes = document.querySelectorAll("button");
 
-// =============================================
-// PARA CADA BOTÃO, ADICIONA UM "OUVINTE" DE CLIQUE
-// =============================================
+const botoes = document.querySelectorAll(".botoes-reacao button");
+
 botoes.forEach(function(botao) {
-    let curtiu = false; // Controla se aquele botão específico já foi curtido
+    let curtiu = false;
 
     botao.addEventListener("click", function() {
-        // Encontra o <span> dentro do botão clicado
         let contador = botao.querySelector("span");
         
-        // =============================================
-        // LÓGICA DE CURTIR / DESCURTIR
-        // (limite de 1 like por clique)
-        // =============================================
         if (curtiu === false) {
-            contador.textContent++; // Aumenta o número
-            curtiu = true;          // Marca como curtido
+            contador.textContent++;
+            curtiu = true;
         } else {
-            contador.textContent--; // Diminui o número (descurtir)
-            curtiu = false;         // Volta a estar disponível para curtir
+            contador.textContent--;
+            curtiu = false;
         }
+    });
+});
+
+// =============================================
+// 2. MODO ESCURO (ALTERNÂNCIA DE TEMA)
+// =============================================
+
+const btnTemaEscuro = document.querySelector(".btn-tema-escuro");
+
+btnTemaEscuro.addEventListener("click", mudaTema);
+
+function mudaTema() {
+    const corpoPagina = document.body;
+
+    if (corpoPagina.classList.contains("tema-escuro")) {
+        corpoPagina.classList.remove("tema-escuro");
+        btnTemaEscuro.textContent = "🌙"; // Volta para lua (modo claro)
+    } else {
+        corpoPagina.classList.add("tema-escuro");
+        btnTemaEscuro.textContent = "☀️"; // Vira sol (modo escuro)
+    }
+}
+
+// =============================================
+// 3. BOTÃO VOLTAR AO TOPO
+// =============================================
+
+const btnVoltarTopo = document.querySelector(".btn-voltar-topo");
+
+btnVoltarTopo.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 });
